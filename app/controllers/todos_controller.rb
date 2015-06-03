@@ -32,7 +32,7 @@ class TodosController < ApplicationController
   def destroy
     if Todo.exists?(params[:id])
       Todo.destroy(params[:id])
-      render json: { message: 'deleted'}, status: 200
+      render json: { message: 'removed item from list'}, status: 200
     else
       render json: { error: 'student not found'}, status: 404
     end
