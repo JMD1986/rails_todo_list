@@ -38,4 +38,16 @@ class TodosController < ApplicationController
     end
   end
 
+  def update
+
+
+    todo = Todo.find(params[:id])
+
+      todo.body = params[:body]
+      todo.completed = params[:body]
+
+      render json: todo
+  end
+
+
 end
