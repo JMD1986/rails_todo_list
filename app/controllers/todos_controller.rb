@@ -39,8 +39,6 @@ class TodosController < ApplicationController
   end
 
   def update
-
-
     todo = Todo.find(params[:id])
 
       todo.body = params[:body]
@@ -48,6 +46,4 @@ class TodosController < ApplicationController
 
       render json: todo
   end
-
-
 end
