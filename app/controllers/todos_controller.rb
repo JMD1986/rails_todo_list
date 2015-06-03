@@ -1,16 +1,23 @@
 class TodosController < ApplicationController
+
   def index
-    @todos = Todo.all
-    user_data = @todos.each do |result|
-      "#{result.body}, #{result.completed}"
-    end
-      render json: user_data, status: 200
-    end
+    render json: Todo.all
+  end
 
-    def new
-      render json: Todo.new
+  def new
+    render json: Todo.new
+  end
+
+  def show
+    begin
+      render json: Todo.find(params[:id])
+
+    rescue ActiveRecord::RecordNotFound => error
+      render json: { error: error.message}, status: 404
+
+    rescue StandardError => error
+      render json: { error: error.message}, status: 422
     end
-
-
+  end
 
 end

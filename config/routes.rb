@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get "/todos", to: "todos#index"
   get "todos/new", to: "todos#new"
+  get "todos/:id", to: "todos#show"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
