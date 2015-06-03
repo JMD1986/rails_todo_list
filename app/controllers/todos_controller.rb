@@ -6,4 +6,11 @@ class TodosController < ApplicationController
     end
       render json: user_data, status: 200
     end
+
+    def new
+      render json: Todo.new
+    end
+
+
+
 end
