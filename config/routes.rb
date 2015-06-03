@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  post "todos", to: "todos#create"
   get "/todos", to: "todos#index"
   get "todos/new", to: "todos#new"
   get "todos/:id", to: "todos#show"

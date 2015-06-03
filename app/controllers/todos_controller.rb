@@ -20,4 +20,12 @@ class TodosController < ApplicationController
     end
   end
 
+  def create
+    begin
+      todolist = Todo.create(body: params.fetch(:body))
+      render json: todolist
+    rescue ActionController::ParameterMissing => error
+      render json: { error: error.message }, status: 422
+    end
+  end
 end
