@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
 
+  post "todos", to: "todos#create"
   get "todos", to: "todos#index"
+
   get "todos/new", to: "todos#new"
+
   get "todos/:id", to: "todos#show"
   put "todos/:id", to: "todos#update"
-  post "todos", to: "todos#create"
   delete "todos/:id", to: "todos#destroy"
 
   # The priority is based upon order of creation: first created -> highest priority.
