@@ -34,7 +34,7 @@ class TodosController < ApplicationController
       Todo.destroy(params[:id])
       render json: { message: 'removed item from list'}, status: 200
     else
-      render json: { error: 'student not found'}, status: 404
+      render json: { error: 'todo not found'}, status: 404
     end
   end
 
