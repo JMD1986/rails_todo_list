@@ -30,10 +30,10 @@ class TodosController < ApplicationController
   end
 
   def destroy
-    if Todo.exists?(params[:id])
+    begin
       Todo.destroy(params[:id])
       render json: { message: 'removed item from list'}, status: 200
-    else
+    rescue ActionController::RecordNotFound => error
       render json: { error: 'todo not found'}, status: 404
     end
   end
