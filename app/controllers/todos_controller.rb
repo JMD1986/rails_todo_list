@@ -1,11 +1,27 @@
 class TodosController < ApplicationController
 
   def index
-    render json: Todo.all
+    all_todos = Todo.all
+    respond_to do |format|
+      format.html do
+        render 'index.html.erb', locals: { todos: all_todos }
+      end
+      format.json do
+        render json: all_todos
+      end
+    end
   end
 
   def new
-    render json: Todo.new
+    new_todo = Todo.new
+    respond_to do |format|
+      format.html do
+        render "new.html.erb", locals: { todos: new_todo }
+      end
+      format.json do
+        render json: new_todo
+      end
+    end
   end
 
   def show
@@ -20,14 +36,7 @@ class TodosController < ApplicationController
     end
   end
 
-  def create
-    begin
-      todolist = Todo.create(body: params.fetch(:body))
-      render json: todolist
-    rescue ActionController::ParameterMissing => error
-      render json: { error: error.message }, status: 422
-    end
-  end
+
 
   def destroy
     begin
