@@ -6,6 +6,7 @@ class TodosController < ApplicationController
       format.html do
         render 'index.html.erb', locals: { todos: all_todos }
       end
+
       format.json do
         render json: all_todos
       end
@@ -18,6 +19,7 @@ class TodosController < ApplicationController
       format.html do
         render "new.html.erb", locals: { todos: new_todo }
       end
+
       format.json do
         render json: new_todo
       end
@@ -26,7 +28,14 @@ class TodosController < ApplicationController
 
   def show
     begin
-      render json: Todo.find(params[:id])
+      found_todo = Todo.find(params[:id])
+        respond_to do |format|
+        format.html do
+          render "todos/html.erb", locals: { todos: found_todo }
+        end
+          format
+        render json: Todo.find(params[:id])
+    end
 
     rescue ActiveRecord::RecordNotFound => error
       render json: { error: error.message}, status: 404
