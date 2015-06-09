@@ -10,6 +10,7 @@ class TodosController < ApplicationController
         render json: all_todos
       end
     end
+  end
 
   def new
     new_todo = Todo.new
@@ -41,8 +42,9 @@ class TodosController < ApplicationController
   def create
     begin
       todo = Todo.create(body: params.fetch(:body),
-                        completed: params.fetch(:completed))
-      render json: todo
+                        completed: params.fetch(:completed, false))
+      redirect_to "/todos"
+
     rescue ActionController::Paramatermissing => error
       render json: { error: "please specify"},status: 422
     end
@@ -51,7 +53,14 @@ class TodosController < ApplicationController
   def destroy
     if Todo.exists?(params[:id])
       Todo.destroy(params[:id])
-      render json: {message: "Todo deleted"}, status: 200
+      respond_to  do |format|
+        format.html do
+          redirect_to "/todos"
+        end
+        format.json do
+          render json: {message: "Todo deleted"}, status: 200
+        end
+      end
     else
       render json: { message: "todo doesn't exist"}, status: 404
     end
@@ -68,4 +77,4 @@ class TodosController < ApplicationController
     render json: todo
   end
 end
-end
+
