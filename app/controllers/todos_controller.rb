@@ -28,7 +28,7 @@ class TodosController < ApplicationController
     found_todo = Todo.find(params[:id])
     respond_to do |format|
       format.html do
-        render "todos/html.erb", locals: { todos: found_todo }
+        render "todos/html.erb", locals: { todo: found_todo }
       end
 
       format.json
