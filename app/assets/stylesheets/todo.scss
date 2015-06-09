@@ -1,17 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Helvitica", sans-serif;
-  background: grey;
+  background: linear-gradient(grey, white);
 }
 
 header {
-background: blue;
-padding: 10px;
+background-image: url(concrete_seamless.png);
+padding: 20px;
 text-align: center;
+font-size: 22px;
 }
 
 footer {
   font-family: "Helvitica", sans-serif;
-  background: blue;
-  padding: 10px;
+  background-image: url(concrete_seamless.png);
+  padding: 20px;
   text-align: center;
+  font-size: 22px;
 }
