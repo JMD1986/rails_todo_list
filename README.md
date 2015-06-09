@@ -1,123 +1,19 @@
 # rails_todo_list
 
-*for your very own copy of this program feel free to do the following
+This is the framework for a rails todo list!
 
-*fork this repo
+as of 6/8/2015 it has the ability to create, edit, delete and update a list of todos.
 
-*clone this repo
+I will continue to work on this project so expect to see more features.
 
-*open up the directory
+ In order to post "todos" send a post request with the field "body" filled with the task. It will enter the list as a new todo.
 
-*run bundle install
+ to see all todos just go to the index or /todos
 
-*enjoy
+to see a specific todo go to todos/:id
 
-```
-.
-├── Gemfile
-├── Gemfile.lock
-├── README.md
-├── README.rdoc
-├── Rakefile
-├── app
-│   ├── assets
-│   │   ├── images
-│   │   ├── javascripts
-│   │   │   ├── application.js
-│   │   │   ├── todo.coffee
-│   │   │   └── todos.coffee
-│   │   └── stylesheets
-│   │       ├── application.css
-│   │       ├── todo.scss
-│   │       └── todos.scss
-│   ├── controllers
-│   │   ├── application_controller.rb
-│   │   ├── concerns
-│   │   ├── todo_controller.rb
-│   │   └── todos_controller.rb
-│   ├── helpers
-│   │   ├── application_helper.rb
-│   │   ├── todo_helper.rb
-│   │   └── todos_helper.rb
-│   ├── mailers
-│   ├── models
-│   │   ├── concerns
-│   │   └── todo.rb
-│   └── views
-│       ├── layouts
-│       │   └── application.html.erb
-│       ├── todo
-│       └── todos
-├── bin
-│   ├── bundle
-│   ├── rails
-│   ├── rake
-│   ├── setup
-│   └── spring
-├── config
-│   ├── application.rb
-│   ├── boot.rb
-│   ├── database.yml
-│   ├── environment.rb
-│   ├── environments
-│   │   ├── development.rb
-│   │   ├── production.rb
-│   │   └── test.rb
-│   ├── initializers
-│   │   ├── assets.rb
-│   │   ├── backtrace_silencers.rb
-│   │   ├── cookies_serializer.rb
-│   │   ├── filter_parameter_logging.rb
-│   │   ├── inflections.rb
-│   │   ├── mime_types.rb
-│   │   ├── session_store.rb
-│   │   └── wrap_parameters.rb
-│   ├── locales
-│   │   └── en.yml
-│   ├── routes.rb
-│   └── secrets.yml
-├── config.ru
-├── db
-│   ├── development.sqlite3
-│   ├── migrate
-│   │   └── 20150603182705_todo.rb
-│   ├── schema.rb
-│   └── seeds.rb
-├── lib
-│   ├── assets
-│   └── tasks
-├── log
-│   └── development.log
-├── public
-│   ├── 404.html
-│   ├── 422.html
-│   ├── 500.html
-│   ├── favicon.ico
-│   └── robots.txt
-├── test
-│   ├── controllers
-│   │   ├── todo_controller_test.rb
-│   │   └── todos_controller_test.rb
-│   ├── fixtures
-│   │   └── todos.yml
-│   ├── helpers
-│   ├── integration
-│   ├── mailers
-│   ├── models
-│   │   └── todo_test.rb
-│   └── test_helper.rb
-├── tmp
-│   ├── cache
-│   │   └── assets
-│   ├── pids
-│   │   └── server.pid
-│   ├── sessions
-│   └── sockets
-└── vendor
-    └── assets
-        ├── javascripts
-        └── stylesheets
+ to update one send a put request to "todos/:id", with the field "completed" to true
 
-44 directories, 59 files
-```
+ to delete a message send a delete request to "todos/:id"
 
+happy hacking!
