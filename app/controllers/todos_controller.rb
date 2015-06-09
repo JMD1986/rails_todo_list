@@ -25,14 +25,15 @@ class TodosController < ApplicationController
   end
 
   def show
-    found_todo = Todo.find(params[:id])
-    respond_to do |format|
-      format.html do
-        render "todos/html.erb", locals: { show_todo: found_todo }
-      end
-
-      format.json
-        render json: Todo.find(params[:id])
+    if Todo.exists?(params[:id])
+      found_todo = Todo.find(params[:id])
+      respond_to do |format|
+        format.html do
+          render 'show.html.erb', locals: { todo: found_todo }
+        end
+        format.json do
+          render json: todo
+        end
       end
     end
   end
@@ -66,4 +67,5 @@ class TodosController < ApplicationController
 
     render json: todo
   end
+end
 end
