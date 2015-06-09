@@ -49,10 +49,16 @@ class TodosController < ApplicationController
 
   def destroy
     begin
-      Todo.destroy(params[:id])
-      render json: { message: 'removed item from list'}, status: 200
-    rescue ActionController::RecordNotFound => error
-      render json: { error: 'todo not found'}, status: 404
+      destroyed_todo = Todo.destroy(params[:id])
+      respond_to do |format|
+        format.html do
+          render "destroy.html.rb", locals: { todos: destroyed_todo }
+        end
+        format.json do
+          render json: { message: 'removed item from list'}, status: 200
+        rescue ActionController::RecordNotFound => error
+          render json: { error: 'todo not found'}, status: 404
+        end
     end
   end
 
